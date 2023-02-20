@@ -34,7 +34,7 @@ public class BookRest implements CommandLineRunner {
             BookDto[] books = allBooksResponse.getBody();
 
             for (BookDto book : books) {
-                
+
                 LOGGER.info("Retrieved a book: {}", book);
             }
         }
