@@ -12,6 +12,7 @@ public class RestConfig{
     public RestTemplate create(RestTemplateBuilder restTemplateBuilder){
         return restTemplateBuilder
                 .build();
+
     }
 
 }
