@@ -15,10 +15,10 @@
                     <a class="nav-link" th:href="@{/pages/all}">All users</a>
                 </li>
                 <li class="nav-item" sec:authorize="hasRole('MODERATOR')">
-                    <a class="nav-link" th:href="@{/pages/moderators}">Moderators</a>
+                    <a class="nav-link" th:href="@{/pages/moderator}">Moderators</a>
                 </li>
                 <li class="nav-item" sec:authorize="hasRole('ADMIN')">
-                    <a class="nav-link" th:href="@{/pages/admins}">Admins</a>
+                    <a class="nav-link" th:href="@{/pages/admin}">Admins</a>
                 </li>
 
                 <!-- Logout start -->

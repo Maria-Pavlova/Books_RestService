@@ -29,6 +29,11 @@ spring:
         format_sql: true
         show_sql: true
     defer-datasource-initialization: true
+
+  app:
+    default:
+      admin:
+        password: admin
 #Cloudinary Properties
 #cloudinary:
   #api-key: 

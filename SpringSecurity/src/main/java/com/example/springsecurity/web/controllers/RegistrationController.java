@@ -1,5 +1,6 @@
 package com.example.springsecurity.web.controllers;
 
+import com.example.springsecurity.models.dtos.UserRegisterDTO;
 import com.example.springsecurity.services.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,10 +19,10 @@ public class RegistrationController {
         return "auth-register";
     }
 
-//    @PostMapping("/users/register")
-//    public String register(UserRegisterDTO userRegisterDTO) {
-//
-//        userService.registerAndLogin(userRegisterDTO);
-//        return "redirect:/";
-//    }
+    @PostMapping("/users/register")
+    public String register(UserRegisterDTO userRegisterDTO) {
+
+        userService.registerAndLogin(userRegisterDTO);
+        return "redirect:/";
+    }
 }

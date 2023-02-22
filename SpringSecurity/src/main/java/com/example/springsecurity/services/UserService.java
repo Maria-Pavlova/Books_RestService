@@ -1,10 +1,15 @@
 package com.example.springsecurity.services;
 
+import com.example.springsecurity.models.dtos.UserRegisterDTO;
 import com.example.springsecurity.models.entities.User;
 import com.example.springsecurity.models.entities.UserRole;
 import com.example.springsecurity.models.enums.Role;
 import com.example.springsecurity.repositories.UserRepository;
 import com.example.springsecurity.repositories.UserRoleRepository;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -81,28 +86,28 @@ public class UserService {
         userRepository.save(user);
     }
 
-//    public void registerAndLogin(UserRegisterDTO userRegisterDTO) {
-//        User newUser =
-//                new User().
-//                        setUsername(userRegisterDTO.getUserName()).
-//                        setFirstName(userRegisterDTO.getFirstName()).
-//                        setLastName(userRegisterDTO.getLastName()).
-//                        setPassword(passwordEncoder.encode(userRegisterDTO.getPassword()));
-//
-//        userRepository.save(newUser);
-//
-//        UserDetails userDetails =
-//                appUserDetailsService.loadUserByUsername(newUser.getUsername());
-//
-//        Authentication auth =
-//                new UsernamePasswordAuthenticationToken(
-//                        userDetails,
-//                        userDetails.getPassword(),
-//                        userDetails.getAuthorities()
-//                );
-//
-//        SecurityContextHolder.
-//                getContext().
-//                setAuthentication(auth);
-//    }
+
+
+    public void registerAndLogin(UserRegisterDTO userRegisterDTO) {
+        User newUser =
+                new User().
+                        setUsername(userRegisterDTO.getUsername()).
+                        setFirstName(userRegisterDTO.getFirstName()).
+                        setLastName(userRegisterDTO.getLastName()).
+                        setPassword(passwordEncoder.encode(userRegisterDTO.getPassword()));
+
+        userRepository.save(newUser);
+
+        UserDetails userDetails =
+                appUserDetailsService.loadUserByUsername(newUser.getUsername());
+
+        Authentication auth =
+                new UsernamePasswordAuthenticationToken(
+                        userDetails,
+                        userDetails.getPassword(),
+                        userDetails.getAuthorities()
+                );
+
+        SecurityContextHolder.getContext().setAuthentication(auth);
+    }
 }
